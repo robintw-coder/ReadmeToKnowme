@@ -1,133 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Career Impact at a Glance | Intel Platform & Ecosystem Engineering</title>
-<style>
-:root {
-  --bg: #f5f7fb; --card: #ffffff; --ink: #162033; --muted: #5d687b;
-  --line: #dfe5ee; --accent: #76b900; --accent-dark: #315400; --soft: #edf5df;
-}
-* { box-sizing: border-box; }
-body { margin: 0; font-family: Inter, "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 28px 20px 56px; }
-.hero { background: linear-gradient(135deg, #111b2e 0%, #20364a 100%); color: white; border-radius: 22px; padding: clamp(26px, 5vw, 54px); position: relative; overflow: hidden; }
-.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: #c7d6e8; font-weight: 700; }
-h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.08; margin: 12px 0 14px; max-width: 780px; }
-.hero p { max-width: 800px; color: #e2e9f1; font-size: 17px; margin: 0; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
-.tag { border: 1px solid rgba(255,255,255,.28); color: #f4f8fc; padding: 6px 10px; border-radius: 999px; font-size: 12px; }
-.section { margin-top: 32px; }
-.section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom: 14px; }
-h2 { margin:0; font-size: clamp(22px, 3vw, 28px); letter-spacing:-.02em; }
-.sub { color: var(--muted); margin: 5px 0 0; font-size: 14px; }
-.metrics { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
-.metric { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; min-height:126px; }
-.metric .num { font-size: clamp(25px, 3vw, 34px); font-weight:800; letter-spacing:-.04em; color:var(--accent-dark); line-height:1.1; }
-.metric .label { font-weight:700; margin-top:9px; }
-.metric .detail { font-size:12px; color:var(--muted); margin-top:5px; }
-.callout { margin-top:14px; padding:13px 16px; border-left:4px solid var(--accent); background:var(--soft); color:#30431b; border-radius:0 10px 10px 0; font-size:13px; }
-.filters { display:flex; flex-wrap:wrap; gap:10px; margin: 14px 0 18px; }
-input, select { font:inherit; border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:white; color:var(--ink); }
-input { flex:1; min-width:220px; }
-.timeline { display:grid; gap:12px; }
-.item { display:grid; grid-template-columns: 160px 1fr; gap:16px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; }
-.item-meta { border-right:1px solid var(--line); padding-right:14px; }
-.gen { font-size:12px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
-.core { font-size:20px; font-weight:800; margin:4px 0; }
-.launch { font-size:13px; color:var(--muted); }
-.chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; }
-.chip { font-size:11px; border-radius:999px; padding:3px 7px; background:#f0f3f8; color:#475268; }
-.note { margin:0; color:#354156; font-size:14px; }
-.note strong { color:var(--ink); }
-.footer { margin-top:28px; color:var(--muted); font-size:12px; border-top:1px solid var(--line); padding-top:16px; }
-.empty { background:white; border:1px dashed var(--line); border-radius:14px; padding:24px; color:var(--muted); text-align:center; }
-@media (max-width: 760px) {
-  .metrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .item { grid-template-columns:1fr; gap:10px; }
-  .item-meta { border-right:0; border-bottom:1px solid var(--line); padding:0 0 10px; }
-  .section-head { display:block; }
-}
-@media (max-width: 420px) { .metrics { grid-template-columns:1fr 1fr; gap:8px; } .metric { padding:13px; } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Intel Sensor Catalog Program — engineering case study by Robin Wu">
+  <title>Intel Sensor Catalog Program | Robin Wu</title>
+  <style>
+    :root {
+      --bg: #fff8ee;
+      --surface: #fffdf9;
+      --text: #2d2926;
+      --muted: #635950;
+      --rust: #a84432;
+      --amber: #e99a40;
+      --peach: #fbe8d5;
+      --teal: #176a65;
+      --teal-soft: #e6f0eb;
+      --line: #e8d8c5;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; font-size: 19px; line-height: 1.65; }
+    .wrap { width: min(1040px, calc(100% - 42px)); margin-inline: auto; }
+    header { background: var(--rust); color: #fffaf4; padding: 68px 0 58px; border-bottom: 9px solid var(--amber); }
+    .kicker { color: #ffe0ae; text-transform: uppercase; font-size: 15px; letter-spacing: .16em; font-weight: 800; }
+    h1 { font-size: clamp(2.8rem, 6vw, 4.9rem); line-height: 1.05; letter-spacing: -.05em; margin: 16px 0 20px; max-width: 840px; }
+    .subhead { color: #fff1e5; font-size: clamp(1.2rem, 2.4vw, 1.5rem); max-width: 810px; margin: 0; line-height: 1.55; }
+    .byline { margin-top: 26px; font-size: 16px; font-weight: 700; letter-spacing: .02em; }
+    main { padding: 52px 0 64px; }
+    .section { margin-bottom: 42px; }
+    h2 { display: flex; gap: 14px; align-items: center; margin: 0 0 16px; font-size: clamp(1.7rem, 3.5vw, 2.25rem); line-height: 1.2; color: var(--rust); letter-spacing: -.025em; }
+    .num { width: 39px; height: 39px; flex: 0 0 39px; display: inline-grid; place-items: center; border-radius: 50%; background: var(--amber); color: #36261a; font-size: 17px; letter-spacing: 0; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 15px; padding: 25px 29px; box-shadow: 0 5px 18px rgba(92, 55, 31, .045); }
+    .challenge { border-left: 7px solid var(--amber); }
+    p { margin: 0 0 15px; }
+    p:last-child { margin-bottom: 0; }
+    .action-lead { font-size: 1.13em; margin-bottom: 22px; }
+    .steps { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .step { display: flex; gap: 14px; align-items: flex-start; background: var(--peach); border-radius: 11px; padding: 19px; }
+    .step-n { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; color: white; background: var(--rust); font-size: 16px; font-weight: 800; }
+    .step p { margin: 0; }
+    .audience { display: flex; flex-wrap: wrap; gap: 12px; }
+    .chip { background: var(--teal-soft); color: var(--teal); border: 1px solid #bcd6cd; border-radius: 100px; font-size: 18px; font-weight: 750; padding: 9px 17px; }
+    .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .result, .impact { padding: 29px; border-radius: 15px; }
+    .result { background: var(--peach); border-top: 7px solid var(--amber); }
+    .impact { background: var(--teal); color: #fffdfa; border-top: 7px solid #f2bf70; }
+    h3 { font-size: 1.48rem; line-height: 1.24; margin: 0 0 14px; }
+    .result h3 { color: var(--rust); }
+    .impact h3 { color: #fff5dc; }
+    .takeaway { padding: 30px; background: #30302d; color: #fffaf3; border-radius: 15px; }
+    .takeaway h2 { color: #ffd495; margin-bottom: 12px; }
+    .takeaway p { font-size: 1.12em; max-width: 910px; }
+    .fineprint { font-size: 15px; color: var(--muted); margin-top: 17px; }
+    footer { border-top: 1px solid var(--line); color: var(--muted); padding: 24px 0 34px; font-size: 16px; }
+    @media (max-width: 760px) {
+      body { font-size: 18px; }
+      header { padding: 48px 0 45px; }
+      main { padding-top: 35px; }
+      .wrap { width: min(100% - 28px,1040px); }
+      .panel, .takeaway, .result, .impact { padding: 21px; }
+      .steps, .outcomes { grid-template-columns: 1fr; }
+      .section { margin-bottom: 36px; }
+    }
+    @media print { body { background: #fff; } .panel, .step, .result, .impact, .takeaway { break-inside: avoid; box-shadow: none; } }
+  </style>
 </head>
 <body>
-<main class="wrap">
-  <header class="hero">
-    <div class="kicker">Career Impact at a Glance</div>
-    <h1>Platform &amp; Ecosystem Engineering</h1>
-    <p>From embedded systems and customer-facing technical enablement to sensor ecosystem development—connecting platform engineering, technology partners, and PC OEM adoption.</p>
-    <div class="tags">
-      <span class="tag">Sensor Ecosystem</span><span class="tag">POC &amp; Technology Enablement</span>
-      <span class="tag">OEM/ODM Engagement</span><span class="tag">Design-In / Design-Win</span>
-      <span class="tag">Embedded &amp; SoC Platforms</span>
+  <header>
+    <div class="wrap">
+      <div class="kicker">Engineering Case Study · Ecosystem Enablement</div>
+      <h1>Intel Sensor Catalog Program</h1>
+      <p class="subhead">Helping sensor vendors enable solutions on Intel architecture — and helping PC OEMs/ODMs evaluate sensing function/compatibility in project design.</p>
+      <div class="byline">Robin Wu · Platform &amp; Ecosystem Engineering</div>
     </div>
   </header>
-
-  <section class="section">
-    <div class="section-head"><div><h2>Career impact at a glance</h2><p class="sub">A quick view of career scope, based on the supplied resume.</p></div></div>
-    <div class="metrics">
-      <article class="metric"><div class="num">20+ years</div><div class="label">Engineering experience</div><div class="detail">Embedded, SoC, multimedia, platform and ecosystem work since 2001.</div></article>
-      <article class="metric"><div class="num">5 OEMs</div><div class="label">Named PC customers</div><div class="detail">Dell, HP, Lenovo, ASUS and Acer listed in the supplied experience.</div></article>
-      <article class="metric"><div class="num">3 phases</div><div class="label">Intel career progression</div><div class="detail">Digital Home Technical Marketing → Third-Party Vendor Enablement → Sensor Ecosystem Enablement.</div></article>
-      <article class="metric"><div class="num">End-to-end</div><div class="label">Technology lifecycle</div><div class="detail">Proposal → POC → partner enablement → customer adoption → design-in/design-win.</div></article>
-    </div>
-    <div class="callout"><strong>Data integrity:</strong> No unverified POC, design-win, vendor, catalog or cost-saving counts are invented here. Add those only after confirming actual figures. Generation-to-career notes below are approximate time-period mappings, not proof of involvement in a particular CPU SKU.</div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><div><h2>Intel CPU generations × career focus</h2><p class="sub">Select a generation or search the timeline. Notes connect the launch period to career responsibilities described in the resume.</p></div></div>
-    <div class="filters">
-      <input id="search" type="search" placeholder="Search generation, codename, launch, or career focus…" aria-label="Search timeline">
-      <select id="series" aria-label="Filter product series"><option value="">All product series</option><option value="Core i3/i5/i7/i9 series">Core series</option><option value="Core Ultra 3/5/7/9 series">Core Ultra series</option></select>
-    </div>
-    <div id="timeline" class="timeline"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><div><h2>How I create value</h2><p class="sub">The consistent thread across roles and platform generations.</p></div></div>
-    <div class="metrics">
-      <article class="metric"><div class="label">Bridge engineering and ecosystem</div><div class="detail">Translate technical needs between internal R&amp;D, vendors, OEM/ODM teams and customer stakeholders.</div></article>
-      <article class="metric"><div class="label">Move technology toward adoption</div><div class="detail">Structure proposals, POCs, demonstrations and partner enablement around customer requirements.</div></article>
-      <article class="metric"><div class="label">Build reusable enablement</div><div class="detail">Sensor catalog, qualification workflows, training programs and reference-board development.</div></article>
-      <article class="metric"><div class="label">Support platform delivery</div><div class="detail">Earlier career in embedded Linux, device drivers, middleware, multimedia and system bring-up.</div></article>
-    </div>
-  </section>
-
-  <div class="footer">Prepared as a professional portfolio draft. Confirm all timeline mappings and public-disclosure permissions before publishing. Do not imply direct support for a CPU generation unless that involvement can be verified.</div>
-</main>
-<script>
-const entries = [{"series": "Core i3/i5/i7/i9 series", "generation": "Gen 2", "core": "Sandy Bridge", "process": "32 nm", "launch": "Q1 2011", "notes": "2011–2013 | Intel Digital Home Technical Marketing: enabled third-party software/platform partners; developed multimedia gateway demos, multi-screen scenarios, technical training and customer-facing demonstrations. This is a period-level career mapping, not a claim of work on this specific CPU SKU."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 3", "core": "Ivy Bridge", "process": "22 nm ", "launch": "Q2 2012", "notes": "2011–2013 | Intel Digital Home Technical Marketing: partner enablement for gateway, browser, multimedia and application ecosystems; supported marketing demos and customer engagement. Period-level mapping only."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 4", "core": "Haswell", "process": "22 nm ", "launch": "Q3 2013", "notes": "2013 | Career transition within Intel: Digital Home technical marketing experience through Sep 2013, followed by Third-Party Vendor Enabling in Client Computing Group. Focus shifted toward platform/vendor integration and customer project enablement."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 5", "core": "Broadwell", "process": "14 nm", "launch": "Q3 2014", "notes": "2013–2015 | Intel Client Computing Group: enabled touch vendors on Intel IPTS; supported touch IC/GPU integration and vendor adoption across PC platforms. Also supported Android BSP vendor integration."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 6", "core": "Skylake", "process": "14 nm", "launch": "Q3 2015", "notes": "2015–2016 | Intel Client Computing Group: vendor enablement across touch, Chrome PC and Android platform ecosystems; supported platform integration and customer project execution."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 7", "core": "Kaby Lake", "process": "14 nm", "launch": "Q4 2016", "notes": "2016–2017 | Intel Client Computing Group: led Chrome OS AVL enablement in Taiwan for Acer, Samsung and HP Chromebook ecosystems; supported vendor qualification and project phases."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 8", "core": "Coffee Lake", "process": "14 nm", "launch": "Q4 2017", "notes": "2017 | Intel Client Computing Group: continued third-party vendor enablement for Intel PC platforms, including touch, display/memory qualification and platform integration."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 8", "core": "Cannon Lake", "process": "10 nm", "launch": "Q2 2018", "notes": "2018 | Intel Client Computing Group: transition period from third-party vendor enablement to sensor ecosystem enablement (new role began May 2018). Focus expanded toward sensor technology POCs and customer adoption."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 8", "core": "Whiskey Lake", "process": "14 nm", "launch": "Q3 2018", "notes": "2018 | Intel Client Computing Group: sensor ecosystem role began May 2018; sensor technology proposals, vendor collaboration, POC development and PC customer engagement. Generation-level alignment is approximate by launch date."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 9", "core": "Coffee Lake Refresh", "process": "14 nm", "launch": "Q4 2018", "notes": "2018–2019 | Intel Client Computing Group: sensor innovation pipeline, stakeholder alignment, vendor POCs and efforts to move sensing technologies toward PC design-in/design-win."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 10", "core": "Ice Lake", "process": "10 nm", "launch": "Q3 2019", "notes": "2019 | Intel Client Computing Group: sensor technology enablement from proposal and POC through partner collaboration and PC customer adoption."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 10", "core": "Comet Lake", "process": "14 nm", "launch": "Q3 2019", "notes": "2019 | Intel Client Computing Group: sensor ecosystem enablement and cross-functional coordination; supported partner/customer engagement for sensing technology evaluation."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 11", "core": "Tiger Lake", "process": "10 nm", "launch": "Q3 2020", "notes": "2020 | Intel Client Computing Group: sensor POCs, ecosystem workshops/training/demos, and coordination with R&D and vendor stakeholders."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 12", "core": "Alder Lake", "process": "10 nm", "launch": "Q1 2021", "notes": "2021 | Intel Client Computing Group: sensor ecosystem development; worked across technical proposals, vendor collaboration, POC demonstrations and PC customer adoption."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 13", "core": "Raptor Lake", "process": "Intel 7 ~= 10 nm", "launch": "Q4 2022", "notes": "2022 | Intel Client Computing Group: continued sensor technology pipeline and partner enablement, with emphasis on OEM/ODM engagement and design-in/design-win progression."}, {"series": "Core i3/i5/i7/i9 series", "generation": "Gen 14", "core": "Raptor Lake Refresh", "process": "Intel 7 ~= 10 nm", "launch": "Q4 2023", "notes": "2023 | Intel Client Computing Group: sensor ecosystem strategy and enablement; sensor catalog program, vendor qualification/certification/classification, and reference-board development/maintenance."}, {"series": "Core Ultra 3/5/7/9 series", "generation": "Series 1", "core": "Meteor Lake", "process": "Intel 4 ~= 7 nm", "launch": "Q4 2023", "notes": "2023 | Intel Client Computing Group: sensor catalog and ecosystem enablement work; supported structured sensor selection and partner collaboration for PC OEM/ODM use. Period-level mapping only."}, {"series": "Core Ultra 3/5/7/9 series", "generation": "Series 2", "core": "Lunar Lake", "process": "TSMC 3 nm", "launch": "Q3 2024", "notes": "2024 | Intel Client Computing Group: sensor technology POCs, vendor ecosystem collaboration and customer-adoption activities; sensor catalog/reference-board program remained relevant where applicable."}, {"series": "Core Ultra 3/5/7/9 series", "generation": "Series 2", "core": "Arrow Lake", "process": "TSMC 3 nm", "launch": "Q4 2024", "notes": "2024 | Intel Client Computing Group: continued sensor ecosystem enablement, partner collaboration, technical requirements and OEM/ODM sensor selection support."}, {"series": "Core Ultra 3/5/7/9 series", "generation": "Series 3", "core": "Panther Lake", "process": "Intel 18A ~= 1.8 nm", "launch": "Q1 2026", "notes": "2026 (listed as Q1 2026 in source spreadsheet) | Current/most recent career scope based on supplied resume: sensor ecosystem enablement, technology POCs, PC customer adoption, sensor catalog and reference-board program. Confirm whether this generation was directly supported before claiming project-specific involvement."}, {"series": "Core Ultra 3/5/7/9 series", "generation": "Series 4", "core": "Nova Lake", "process": "Intel 18A ~= 1.8 nm", "launch": "?", "notes": "Launch timing is marked '?' in the source spreadsheet. Do not attribute work to this generation until launch timing and direct project involvement are verified."}];
-const timeline = document.getElementById('timeline');
-const search = document.getElementById('search');
-const series = document.getElementById('series');
-function render() {
-  const q = search.value.trim().toLowerCase();
-  const s = series.value;
-  const filtered = entries.filter(e => (!s || e.series === s) &&
-    [e.series,e.generation,e.core,e.process,e.launch,e.notes].join(' ').toLowerCase().includes(q));
-  if (!filtered.length) {
-    timeline.innerHTML = '<div class="empty">No matching generations. Try a different search term.</div>';
-    return;
-  }
-  timeline.innerHTML = filtered.map(e => `
-    <article class="item">
-      <div class="item-meta">
-        <div class="gen">${escapeHtml(e.generation)} · ${escapeHtml(e.series)}</div>
-        <div class="core">${escapeHtml(e.core)}</div>
-        <div class="launch">${escapeHtml(e.launch)}${e.process ? ' · ' + escapeHtml(e.process) : ''}</div>
-        <div class="chips"><span class="chip">${escapeHtml(e.series.includes('Ultra') ? 'Core Ultra' : 'Core')}</span><span class="chip">Career-period mapping</span></div>
+  <main class="wrap">
+    <section class="section" aria-labelledby="challenge-title">
+      <h2 id="challenge-title"><span class="num">1</span>Challenge</h2>
+      <div class="panel challenge">
+        <p>PC OEM/ODM had to invest a lot of resource in selecting suitable sensing solution and driving sensor vendors to pass each OEM/ODM proprietary certification requirements.</p>
       </div>
-      <p class="note">${escapeHtml(e.notes)}</p>
-    </article>`).join('');
-}
-function escapeHtml(value) {
-  return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-}
-search.addEventListener('input', render);
-series.addEventListener('change', render);
-render();
-</script>
+    </section>
+    <section class="section" aria-labelledby="action-title">
+      <h2 id="action-title"><span class="num">2</span>What I Did</h2>
+      <div class="panel">
+        <p class="action-lead"><strong>I designed the Intel Sensor Catalog Program</strong> to support sensor vendors developing their products on Intel architecture and to simplify sensor evaluation for PC customers.</p>
+        <div class="steps">
+          <div class="step"><span class="step-n">01</span><p>Collaborated with <strong>AAEON</strong> to develop an Intel reference board for enabling various sensor functions.</p></div>
+          <div class="step"><span class="step-n">02</span><p>Reviewed OEM/ODM proprietary certification requirements and worked with <strong>Intel Sensor R&amp;D</strong> to deliver development documentation and certification rules.</p></div>
+          <div class="step"><span class="step-n">03</span><p>Established and managed vendor collaboration processes covering <strong>technical requirements, certification, and classification</strong>.</p></div>
+          <div class="step"><span class="step-n">04</span><p>Regularly organized <strong>training, workshops, and demonstrations</strong> to support vendor and ecosystem enablement.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="audience-title">
+      <h2 id="audience-title"><span class="num">3</span>For Whom</h2>
+      <div class="panel audience"><span class="chip">PC OEMs / ODMs</span><span class="chip">Sensor Vendors</span></div>
+    </section>
+    <section class="section" aria-labelledby="outcomes-title">
+      <h2 id="outcomes-title"><span class="num">4</span>Results &amp; Impact</h2>
+      <div class="outcomes">
+        <div class="result">
+          <h3>Results · What Was Delivered</h3>
+          <p>Built a sensor catalog to support PC OEM/ODM <strong>BOM/AVL selection</strong> of sensing solutions compatible with Intel platforms.</p>
+          <p>Updated the catalog for <strong>each Intel SoC generation</strong>.</p>
+        </div>
+        <div class="impact">
+          <h3>Impact · Why It Mattered</h3>
+          <p>Lowered the integration barriers for third-party sensor solutions on Intel architecture.</p>
+          <p>Strengthened Intel SoC competitiveness in PC OEM/ODM platform selection and business opportunities.</p>
+        </div>
+      </div>
+    </section>
+    <section class="takeaway" aria-labelledby="lesson-title">
+      <h2 id="lesson-title">Key Lesson Learned</h2>
+      <p>Building a scalable ecosystem requires more than enabling individual sensors. <strong>Reusable reference hardware, clear certification criteria, structured vendor processes, and ongoing partner education</strong> help turn diverse third-party solutions into practical choices for PC manufacturers.</p>
+    </section>
+    <p class="fineprint">Impact statements describe the program's intended business value; no numerical adoption or revenue results were provided.</p>
+  </main>
+  <footer><div class="wrap">Robin Wu · Intel Sensor Catalog Program</div></footer>
 </body>
 </html>
